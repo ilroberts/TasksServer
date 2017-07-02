@@ -2,12 +2,14 @@
 buildscript {
     dependencies {
         classpath 'com.h2database:h2:1.4.191'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
     }
 }
 
 plugins {
     id "java"
     id "application"
+    id 'com.github.johnrengelman.shadow' version '2.0.1'
     id "org.flywaydb.flyway" version "4.2.0"
 }
 
@@ -33,6 +35,8 @@ repositories {
 
 dependencies {
 
+    compile fileTree(dir: 'libs', include: '*.jar')
+
     // https://mvnrepository.com/artifact/io.dropwizard/dropwizard-core
     compile group: 'io.dropwizard', name: 'dropwizard-core', version: '1.1.2'
 
@@ -41,6 +45,9 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.h2database/h2
     testCompile group: 'com.h2database', name: 'h2', version: '1.4.196'
+
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    testCompile group: 'com.h2database', name: 'h2', version: '1.4.195'
 
     // https://mvnrepository.com/artifact/io.dropwizard/dropwizard-testing
     testCompile group: 'io.dropwizard', name: 'dropwizard-testing', version: '1.1.2'

@@ -1,6 +1,6 @@
 package com.ilroberts.tasks.dao;
 
-import com.ilroberts.tasks.core.Task;
+import com.ilroberts.tasks.api.Task;
 import com.ilroberts.tasks.core.mapper.TaskMapper;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;

@@ -1,8 +1,16 @@
 package com.ilroberts.tasks;
 
+import com.ilroberts.tasks.api.Task;
+import com.ilroberts.tasks.dao.TaskDAO;
+import com.ilroberts.tasks.resources.TaskResource;
 import io.dropwizard.Application;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.skife.jdbi.v2.DBI;
+
+import java.util.List;
 
 public class TasksApplication extends Application<TasksConfiguration> {
 
@@ -24,7 +32,12 @@ public class TasksApplication extends Application<TasksConfiguration> {
     @Override
     public void run(TasksConfiguration configuration,
                     Environment environment) {
-        // nothing to do yet
+
+        final DBIFactory factory = new DBIFactory();
+        final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "h2");
+        final TaskDAO dao = jdbi.onDemand(TaskDAO.class);
+
+        environment.jersey().register(new TaskResource(dao));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.ilroberts.tasks.core;
+package com.ilroberts.tasks.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
