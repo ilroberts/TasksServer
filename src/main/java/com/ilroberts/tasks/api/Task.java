@@ -2,14 +2,17 @@ package com.ilroberts.tasks.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class Task {
 
     @JsonProperty
+    @NotNull
     private String id = "";
 
     @JsonProperty
+    @NotNull
     private String title = "";
 
     @JsonProperty
@@ -19,6 +22,7 @@ public class Task {
     private String description ="";
 
     @JsonProperty
+    @NotNull
     private Date createdDate = null;
 
     public Task() {
