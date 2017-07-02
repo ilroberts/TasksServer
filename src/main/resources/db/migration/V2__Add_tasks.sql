@@ -1,0 +1,1 @@
+insert into TASK values('abc-123', 'title', 'description', CURRENT_DATE, CURRENT_DATE);
