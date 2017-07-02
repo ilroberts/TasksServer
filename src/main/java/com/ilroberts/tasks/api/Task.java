@@ -6,41 +6,49 @@ import java.util.Date;
 
 public class Task {
 
-    private final String id;
-    private final String title;
-    private final Date dueDate;
-    private final String description;
-    private final Date createdDate;
+    @JsonProperty
+    private String id = "";
+
+    @JsonProperty
+    private String title = "";
+
+    @JsonProperty
+    private Date dueDate = null;
+
+    @JsonProperty
+    private String description ="";
+
+    @JsonProperty
+    private Date createdDate = null;
+
+    public Task() {
+
+    }
 
     public Task(String id, String title, Date dueDate, String description, Date createdDate) {
         this.id = id;
         this.title = title;
-        this.dueDate = dueDate;
         this.description = description;
         this.createdDate = createdDate;
+        this.dueDate = dueDate;
     }
 
-    @JsonProperty
     public String getId() {
         return id;
     }
 
-    @JsonProperty
     public String getTitle(){
         return title;
     }
 
-    @JsonProperty
     public Date getDueDate(){
         return dueDate;
     }
 
-    @JsonProperty
     public String getDescription(){
         return description;
     }
 
-    @JsonProperty
     public Date getCreatedDate(){
         return createdDate;
     }

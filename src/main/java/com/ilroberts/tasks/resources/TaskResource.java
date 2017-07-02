@@ -3,10 +3,8 @@ package com.ilroberts.tasks.resources;
 import com.ilroberts.tasks.api.Task;
 import com.ilroberts.tasks.dao.TaskDAO;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.validation.Valid;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -25,5 +23,12 @@ public class TaskResource {
     public List<Task> getTasks() {
 
         return taskDAO.getAll();
+    }
+
+    @POST
+    public Task addTask(@Valid Task task) {
+        taskDAO.insert(task);
+
+        return task;
     }
 }
