@@ -21,14 +21,33 @@ public class TaskResource {
 
     @GET
     public List<Task> getTasks() {
-
         return taskDAO.getAll();
+    }
+
+    @GET
+    @Path("/{id}")
+    public Task getTask(@PathParam("id") String id) {
+        return taskDAO.findById(id);
     }
 
     @POST
     public Task addTask(@Valid Task task) {
         taskDAO.insert(task);
-
         return task;
+    }
+
+    @PUT
+    @Path("/{id}")
+    public Task update(@PathParam("id") String id, @Valid Task task) {
+        Task updateTask = new Task(id, task.getTitle(), task.getDueDate(),task.getDescription(), task.getCreatedDate());
+        taskDAO.update(updateTask);
+
+        return updateTask;
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void delete(@PathParam("id") String id) {
+        taskDAO.deleteById(id);
     }
 }

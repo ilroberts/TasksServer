@@ -20,7 +20,7 @@ public interface TaskDAO {
     Task findById(@Bind("id") String id);
 
     @SqlUpdate("delete from TASK where ID = :id")
-    int deleteById(@Bind("id") int id);
+    int deleteById(@Bind("id") String id);
 
     @SqlUpdate("update TASK set TITLE = :title, DESCRIPTION = :description, DUE_DATE = :dueDate, CREATED_DATE = :createdDate where ID = :id")
     int update(@BindBean Task task);
