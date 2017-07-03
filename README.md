@@ -1,7 +1,6 @@
 # Dropwizard JDBI
 
-![BuildStatus](https://travis-ci.org/ilroberts/TasksServer.svg?branch=master)
-
+[![Build Status](https://travis-ci.org/ilroberts/TasksServer.png?branch=master)](https://travis-ci.org/ilroberts/TasksServer)
 
 Test project for Dropwizard 10 using JDBI to interact with a DB.
 
