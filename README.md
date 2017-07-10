@@ -7,7 +7,11 @@ Test project for Dropwizard 10 using JDBI to interact with a DB.
 
 ## Setup H2 DB
 
-Creates an H2 DB populated with the migration scripts in src/main/resources/db/migration
+Creates an H2 DB populated with the migration scripts in src/main/resources/db/migration.
+
+This main function of this application is to act as a back-end server for an Ember based todo application. It has now 
+been updated to add a root element to the JSON to allow the Ember RESTSerializer to successfully serialize the retrieved
+ JSON.
 
 ```
 gradle flywayMigrate -i
