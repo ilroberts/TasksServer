@@ -1,5 +1,6 @@
 package com.ilroberts.tasks.resources;
 
+import com.ilroberts.tasks.api.APIResponse;
 import com.ilroberts.tasks.api.Task;
 import com.ilroberts.tasks.dao.TaskDAO;
 
@@ -20,8 +21,9 @@ public class TaskResource {
     }
 
     @GET
-    public List<Task> getTasks() {
-        return taskDAO.getAll();
+    public APIResponse getTasks() {
+
+        return new APIResponse(taskDAO.getAll());
     }
 
     @GET
