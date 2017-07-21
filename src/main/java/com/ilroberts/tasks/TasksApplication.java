@@ -8,6 +8,8 @@ import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.federecio.dropwizard.swagger.SwaggerBundle;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import org.skife.jdbi.v2.DBI;
 
 import java.util.List;
@@ -26,7 +28,13 @@ public class TasksApplication extends Application<TasksConfiguration> {
 
     @Override
     public void initialize(Bootstrap<TasksConfiguration> bootstrap) {
-        // nothing to do yet
+
+        bootstrap.addBundle(new SwaggerBundle<TasksConfiguration>() {
+            @Override
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(TasksConfiguration configuration) {
+                return configuration.swaggerBundleConfiguration;
+            }
+        });
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.ilroberts.tasks.resources;
 import com.ilroberts.tasks.api.APIResponse;
 import com.ilroberts.tasks.api.Task;
 import com.ilroberts.tasks.dao.TaskDAO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 import javax.validation.Valid;
 import javax.ws.rs.*;
@@ -10,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/tasks")
+@Api("/tasks")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class TaskResource {
@@ -21,6 +24,7 @@ public class TaskResource {
     }
 
     @GET
+    @ApiOperation("retrieve all tasks")
     public APIResponse getTasks() {
 
         return new APIResponse(taskDAO.getAll());

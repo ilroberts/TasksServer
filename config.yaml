@@ -20,3 +20,6 @@ database:
   checkConnectionWhileIdle: false
   evictionInterval: 10s
   minIdleTime: 1 minute
+
+swagger:
+  resourcePackage: com.ilroberts.tasks.resources
