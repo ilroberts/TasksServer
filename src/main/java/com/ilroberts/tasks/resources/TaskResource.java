@@ -2,10 +2,12 @@ package com.ilroberts.tasks.resources;
 
 import com.ilroberts.tasks.api.APIResponse;
 import com.ilroberts.tasks.api.Task;
+import com.ilroberts.tasks.controller.TasksController;
 import com.ilroberts.tasks.dao.TaskDAO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -18,6 +20,9 @@ import java.util.List;
 public class TaskResource {
 
     private final TaskDAO taskDAO;
+
+    @Inject
+    private TasksController tasksController;
 
     public TaskResource(TaskDAO taskDAO) {
         this.taskDAO = taskDAO;
@@ -39,6 +44,7 @@ public class TaskResource {
     @POST
     public Task addTask(@Valid Task task) {
         taskDAO.insert(task);
+        tasksController.addTask();
         return task;
     }
 
@@ -47,7 +53,6 @@ public class TaskResource {
     public Task update(@PathParam("id") String id, @Valid Task task) {
         Task updateTask = new Task(id, task.getTitle(), task.getDueDate(),task.getDescription(), task.getCreatedDate());
         taskDAO.update(updateTask);
-
         return updateTask;
     }
 
