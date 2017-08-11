@@ -1,5 +1,6 @@
 package com.ilroberts.tasks;
 
+import com.hubspot.dropwizard.guice.GuiceBundle;
 import com.ilroberts.tasks.api.Task;
 import com.ilroberts.tasks.dao.TaskDAO;
 import com.ilroberts.tasks.resources.TaskResource;
@@ -17,6 +18,8 @@ import java.util.List;
 public class TasksApplication extends Application<TasksConfiguration> {
 
 
+    private GuiceBundle<TasksConfiguration> guiceBundle;
+
     public static void main(String[] args) throws Exception {
         new TasksApplication().run(args);
     }
@@ -28,6 +31,13 @@ public class TasksApplication extends Application<TasksConfiguration> {
 
     @Override
     public void initialize(Bootstrap<TasksConfiguration> bootstrap) {
+
+        guiceBundle = GuiceBundle.<TasksConfiguration>newBuilder()
+                .addModule(new TasksModule())
+                .setConfigClass(TasksConfiguration.class)
+                .build();
+
+        bootstrap.addBundle(guiceBundle);
 
         bootstrap.addBundle(new SwaggerBundle<TasksConfiguration>() {
             @Override
